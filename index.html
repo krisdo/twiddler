@@ -20,10 +20,28 @@
         while(index >= 0){
           var tweet = streams.home[index];
           var $tweet = $('<div></div>');
-          $tweet.text('@' + tweet.user + ': ' + tweet.message + " at " + tweet.created_at);
+          var $tweetUsername = $('<span></span>');
+          var $tweetTime = $('<span></span>');
+          var $tweetMsg = $('<p></p>');
+          $tweetUsername.text('@' + tweet.user);
+          $tweetTime.text('    ' + tweet.created_at);
+          $tweetMsg.text(tweet.message);
+          // $tweetMsg.text( + ': ' + tweet.message + " at " + tweet.created_at);
           $tweet.appendTo($body);
+          $tweet.addClass('tweet');
+          $tweetUsername.appendTo($tweet);
+          $tweetUsername.addClass('username');
+          $tweetTime.appendTo($tweet);
+          $tweetTime.addClass('tweetTime')
+          $tweetMsg.appendTo($tweet);
+          $tweetMsg.addClass('tweetMsg')
+
           index -= 1;
         }
+
+        $( '.username' ).click(function() {
+            $( this ).slideUp();
+        });
         //creates an event listener that will run any time the input changes
         // <input id="input" value="Cool Articles" type="text">
         //     <h1>Cool Articles</h1>
