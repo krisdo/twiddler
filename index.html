@@ -11,17 +11,38 @@
         var $body = $('body');
         $body.html('');
 
+        $upTop = $('<h1>Twiddler</h1>').appendTo($body);
+        $upTop.addClass('title');
+        //iterate tweet object: to look at "Create At" key
+
+
         var index = streams.home.length - 1;
         while(index >= 0){
           var tweet = streams.home[index];
           var $tweet = $('<div></div>');
-          $tweet.text('@' + tweet.user + ': ' + tweet.message);
+          $tweet.text('@' + tweet.user + ': ' + tweet.message + " at " + tweet.created_at);
           $tweet.appendTo($body);
           index -= 1;
         }
+        //creates an event listener that will run any time the input changes
+        // <input id="input" value="Cool Articles" type="text">
+        //     <h1>Cool Articles</h1>
+        $('#input').on('change', function() {
+          var val, h1;
+          val = $('#input').val();
+          h1 = $('h1');
+          h1.text(val);
+        });
+
+        //use .click() to click on user name
+
+//iterate users object to get timeline
+        for (key in streams.users) {
+
+        }
 
       });
-
+//Add new DOM: .append().prepend() .insertBefore()  .insertAfter()
     </script>
   </body>
 </html>
