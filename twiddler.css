@@ -1,0 +1,53 @@
+body {
+  background-color: lightblue;
+  font-family: 'Georgia';
+  margin-left: 20px;
+}
+
+h1 {
+  color: #0073e6;
+  text-align: center;
+  font-size: 60px;
+  padding: 40px 40px 5px 40px;
+   text-shadow: 1px 1px 1px #919191,
+        1px 2px 1px #919191,
+        1px 3px 1px #919191,
+        1px 4px 1px #919191,
+        1px 5px 1px #919191,
+        1px 6px 1px #919191,
+        1px 7px 1px #919191,
+        1px 8px 1px #919191,
+        1px 9px 1px #919191,
+        1px 10px 1px #919191,
+    1px 2px 2px rgba(16,16,16,0.4),
+    1px 3px 3px rgba(16,16,16,0.2),
+    1px 4px 4px rgba(16,16,16,0.2),
+    1px 5px 5px rgba(16,16,16,0.4);
+
+}
+
+button {
+	font-size: 20px;
+	color: #595959;
+	border-radius: 8px;
+	background: rgba(230, 230, 240, 0.8);
+	border-style: ridge;
+}
+
+.tweet {
+	border-style: ridge;
+	border-width: 2px;
+	margin-bottom: 10px;
+	padding: 10px;
+	border-radius: 8px;
+	background: rgba(230, 230, 230, 0.3);      
+}
+
+.username {
+	font-weight: bold;
+}
+
+.tweetTime {
+	font-size: 8px;
+}
+
