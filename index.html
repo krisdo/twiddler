@@ -10,10 +10,57 @@
       $(document).ready(function(){
         var $body = $('body');
         $body.html('');
-
+        
         $upTop = $('<h1>Twiddler</h1>').appendTo($body);
         $upTop.addClass('title');
         //iterate tweet object: to look at "Create At" key
+
+        $('<div></div>').appendTo($body);
+        $('div').addClass('buttons');
+
+        var $button1 = $('<button></button>');
+        $button1.text('New Tweets');
+        $button1.appendTo('.buttons');
+        $button1.attr('id', 'btn1');
+
+        var $button2 = $('<button></button>');
+        $button2.text('Reload Tweets');
+        $button2.appendTo('.buttons');
+        $button2.attr('id', 'btn2');
+        $('button').css("margin","20px");
+
+        $('#btn2').on('click', function() {
+          $('.tweet').show();
+        });
+
+
+        $('#btn1').on('click', function() {
+          var index = 10;
+          while(index >= 0){
+            var newTweet = streams.home[index];
+            var $newTweet = $('<div></div>');
+            var $tweetUsername = $('<span></span>');
+            var $tweetTime = $('<span></span>');
+            var $tweetMsg = $('<p></p>');
+
+            $tweetUsername.text('@' + newTweet.user);
+            $tweetTime.text(' ' + newTweet.created_at);
+            $tweetMsg.text(newTweet.message);
+
+            $newTweet.insertAfter('.buttons');
+            $newTweet.addClass('tweet');
+            $tweetUsername.appendTo($newTweet);
+            $tweetUsername.addClass('username');
+            $tweetTime.appendTo($newTweet);
+            $tweetTime.addClass('tweetTime');
+            $tweetMsg.appendTo($newTweet);
+            $tweetMsg.addClass('tweetMsg');
+
+            index -= 1;
+
+          }
+
+      });
 
 
         var index = streams.home.length - 1;
@@ -23,44 +70,46 @@
           var $tweetUsername = $('<span></span>');
           var $tweetTime = $('<span></span>');
           var $tweetMsg = $('<p></p>');
+
           $tweetUsername.text('@' + tweet.user);
           $tweetTime.text('    ' + tweet.created_at);
           $tweetMsg.text(tweet.message);
-          // $tweetMsg.text( + ': ' + tweet.message + " at " + tweet.created_at);
+          
           $tweet.appendTo($body);
           $tweet.addClass('tweet');
           $tweetUsername.appendTo($tweet);
           $tweetUsername.addClass('username');
           $tweetTime.appendTo($tweet);
-          $tweetTime.addClass('tweetTime')
+          $tweetTime.addClass('tweetTime');
           $tweetMsg.appendTo($tweet);
-          $tweetMsg.addClass('tweetMsg')
+          $tweetMsg.addClass('tweetMsg');
 
           index -= 1;
         }
 
-        $( '.username' ).click(function() {
-            $( this ).slideUp();
-        });
-        //creates an event listener that will run any time the input changes
-        // <input id="input" value="Cool Articles" type="text">
-        //     <h1>Cool Articles</h1>
-        $('#input').on('change', function() {
-          var val, h1;
-          val = $('#input').val();
-          h1 = $('h1');
-          h1.text(val);
-        });
 
-        //use .click() to click on user name
+      
 
-//iterate users object to get timeline
-        for (key in streams.users) {
 
-        }
+          $(document).on('click', '.username', function() {
+
+            var currentName = $(this).text();
+            $('.tweet').each(function( index ) {
+              if ( currentName !== $(this).find('span.username').text()) {
+                $(this).hide();
+              }  
+            });
+          });
+
+    
+
+
+        
+
+
 
       });
-//Add new DOM: .append().prepend() .insertBefore()  .insertAfter()
+
     </script>
   </body>
 </html>
